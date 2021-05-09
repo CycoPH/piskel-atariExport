@@ -135,6 +135,7 @@
   "js/controller/settings/exportimage/GifExportController.js",
   "js/controller/settings/exportimage/PngExportController.js",
   "js/controller/settings/exportimage/ZipExportController.js",
+  "js/controller/settings/exportimage/AtariExportController.js",
   "js/controller/settings/exportimage/MiscExportController.js",
   "js/controller/settings/exportimage/ExportController.js",
   "js/controller/settings/resize/ResizeController.js",

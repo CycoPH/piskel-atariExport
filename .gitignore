@@ -38,3 +38,4 @@ report
 
 # marked as private
 *.private.*
+package-lock.json
