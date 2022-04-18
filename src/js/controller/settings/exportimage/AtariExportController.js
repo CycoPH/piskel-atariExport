@@ -13,6 +13,9 @@
 		this.atariSpritePrefixInput = document.querySelector('.atari-prefix-name');
 		this.atariSpritePrefixInput.value = 'PM_';
 
+		this.atariSpriteFramePrefixInput = document.querySelector('.atari-frame-prefix-name');
+		this.atariSpriteFramePrefixInput.value = 'frm_';
+
 		this.splitByColorIndex =  document.querySelector('.asm-from-pallete-checkbox');
 
 		var asmDownloadButton = document.querySelector('.atasm-download-button')
@@ -150,6 +153,8 @@
 		var basename = this.atariSpritePrefixInput.value;
 		var asmName = basename + this.getPiskelName_().replace(' ', '_');
 		var fileName = this.getPiskelName_() + '.asm';
+
+		var frameBaseName = this.atariSpriteFramePrefixInput.value.replace(' ','');
 		// Some output naming conventions used
 		// One column players use Frm
 		// Two column players use Left and Right
@@ -186,7 +191,7 @@
 			// The sprite it output in columns from left to right
 			for (var columnNr = 0; columnNr < nrColumns; ++columnNr) {
 				for (var frameNr = 0; frameNr < nrFrames; ++frameNr) {
-					var frameName = columnName[columnNr] + frameNr + '_lvl' + layerNr + '_col' + columnNr;
+					var frameName = frameBaseName + columnName[columnNr] + frameNr + '_lvl' + layerNr + '_col' + columnNr;
 					pmStr += frameName + ' .byte ';
 
 					var pixels = allFrames[frameNr];
