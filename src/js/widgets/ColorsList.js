@@ -4,6 +4,7 @@
   var DEFAULT_COLOR = '#000000';
 
   ns.ColorsList = function (container) {
+    this.inAtariMode = false;
     this.selectedIndex = -1;
     this.palette = new pskl.model.Palette('tmp', 'tmp', []);
     this.container = container;
@@ -22,8 +23,17 @@
     var colorPickerContainer = container.querySelector('.color-picker-container');
     this.hslRgbColorPicker = new pskl.widgets.HslRgbColorPicker(colorPickerContainer, this.onColorUpdated_.bind(this));
     this.hslRgbColorPicker.init();
+
+	// Atari version
+    var atariColorPickerContainer = container.querySelector('.atari-color-picker-container');
+    this.atariColorPicker = new pskl.widgets.AtariColorPicker(atariColorPickerContainer,
+		this.onAtariColorUpdated_.bind(this));
+    this.atariColorPicker.init();
   };
 
+  /*
+   *Apply the colors from the palette to the color list control
+   */
   ns.ColorsList.prototype.setColors = function (colors) {
     if (colors.length === 0) {
       colors.push(DEFAULT_COLOR);
@@ -45,6 +55,7 @@
     $(this.container).sortable('destroy');
 
     this.hslRgbColorPicker.destroy();
+    this.atariColorPicker.destroy();
     this.container = null;
     this.colorsList = null;
     this.colorPreviewEl = null;
@@ -80,6 +91,23 @@
     if (this.palette) {
       this.palette.set(this.selectedIndex, strColor);
       this.refreshColorElement_(this.selectedIndex);
+    }
+  };
+
+  ns.ColorsList.prototype.onAtariColorUpdated_ = function (color) {
+    var strColor = color.toHexString();
+    this.colorPreviewEl.style.background = strColor;
+    if (this.palette) {
+      this.palette.set(this.selectedIndex, strColor);
+      this.refreshColorElement_(this.selectedIndex);
+
+	  // Tell the Atari picker about the new color set for index XYZ
+	  if (this.selectedIndex <= 2) {
+        var orColorRGB = this.atariColorPicker.updateORColors(this.palette);
+		if (orColorRGB) {
+        	this.palette.set(2, orColorRGB.toHexString());
+		}
+	  }
     }
   };
 
@@ -123,6 +151,9 @@
   ns.ColorsList.prototype.selectColor_ = function (index) {
     this.selectedIndex = index;
     this.hslRgbColorPicker.setColor(this.palette.get(index));
+    if (this.inAtariMode) {
+      this.atariColorPicker.setColor(this.palette.get(index), index);
+    }
   };
 
   ns.ColorsList.prototype.removeColor_ = function (index) {
@@ -147,4 +178,19 @@
 
     this.refresh_();
   };
+
+  ns.ColorsList.prototype.forceAtariPALColors = function() {
+	console.log(this.palette);
+    // Process the current palette to force each color into Atari PAL palette
+	var colors = this.palette.getColors();
+	var newColors = [];
+
+	for (var i = 0; i < colors.length; ++i)
+	{
+		var col = this.atariColorPicker.findClosetColor(colors[i]);
+		newColors[i] = col.rgb;
+	}
+	this.setColors(newColors);
+	return this.palette;
+  }
 })();

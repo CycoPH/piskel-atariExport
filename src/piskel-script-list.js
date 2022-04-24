@@ -171,6 +171,7 @@
   "js/widgets/ColorsList.js",
   "js/widgets/FramePicker.js",
   "js/widgets/HslRgbColorPicker.js",
+  "js/widgets/AtariColorPicker.js",
   "js/widgets/SizeInput.js",
   "js/widgets/SizePicker.js",
   "js/widgets/SynchronizedInputs.js",

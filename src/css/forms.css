@@ -69,6 +69,10 @@
   color: #777;
 }
 
+.button-hidden {
+	display:none;
+}
+
 .import-size-field,
 .resize-size-field,
 .export-size-field  {

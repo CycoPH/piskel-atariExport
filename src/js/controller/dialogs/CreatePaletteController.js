@@ -11,6 +11,8 @@
   ns.CreatePaletteController.prototype.init = function (paletteId) {
     this.superclass.init.call(this);
 
+    this.inAtariMode = false;
+
     this.hiddenFileInput = document.querySelector('.create-palette-import-input');
     this.nameInput = document.querySelector('input[name="palette-name"]');
 
@@ -80,7 +82,33 @@
       this.closeDialog();
     } else if (target.dataset.action === 'delete') {
       this.deletePalette_();
+    } else if (target.dataset.action === 'atarimode') {
+      this.switchAtariMode_();
+    } else if (target.dataset.action === 'forceataripal') {
+      this.forceAtariPAL();
     }
+  };
+
+  // Force the current palette to be in Atari PAL colors
+  ns.CreatePaletteController.prototype.forceAtariPAL = function () {
+    var newPalette = this.colorsListWidget.forceAtariPALColors();
+    this.setPalette_(newPalette);
+  };
+
+  ns.CreatePaletteController.prototype.switchAtariMode_ = function () {
+    var atariModeButton = document.querySelector('.create-palette-atarimode');
+    var forceAtariPALButton = document.querySelector('.create-palette-forceataripal');
+    var colorPickerContainer = document.querySelector('.color-picker-container');
+    var atariColorPickerContainer = document.querySelector('.atari-color-picker-container');
+
+    this.inAtariMode = !this.inAtariMode;
+	// Switch modes
+    atariModeButton.textContent = this.inAtariMode ? 'Normal Mode' : 'Atari Mode';
+    forceAtariPALButton.style.display = this.inAtariMode ? 'inline-block' : 'none';
+    colorPickerContainer.style.display = this.inAtariMode ? 'none' : '';
+    atariColorPickerContainer.style.display = this.inAtariMode ? 'block' : 'none';
+
+    this.colorsListWidget.inAtariMode = this.inAtariMode;
   };
 
   ns.CreatePaletteController.prototype.saveAndSelectPalette_ = function () {

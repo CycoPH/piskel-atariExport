@@ -64,6 +64,7 @@
   margin: 11px;
 }
 
+
 .colors-list {
   overflow: auto;
   width: 280px;
@@ -166,4 +167,53 @@
   box-shadow : none;
   border-radius:0;
   padding:5px;
+}
+
+/* Atari palette */
+
+.atari-color-picker-container {
+	position: absolute;
+	left: 280px;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: #222;
+	display: none;
+}
+
+.atari-color-preview-container {
+	width: 170px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+}
+.atari-color-preview-part1 {
+	float: left;
+	width: 2em;
+	text-align: end;
+}
+.atari-color-preview-part2 {
+	float: left;
+	width: 2em;
+	text-align: end;
+}
+.atari-color-preview-part3 {
+	float: left;
+	width: 2em;
+	text-align: end;
+}
+.atari-color-preview1 {
+	width: 100px;
+	height: 20px;
+	margin: 5px;
+}
+.atari-color-preview2 {
+	width: 100px;
+	height: 20px;
+	margin: 5px;
+}
+.atari-color-preview3 {
+	width: 100px;
+	height: 20px;
+	margin: 5px;
 }

@@ -24,7 +24,13 @@
         </div>
         <div class="colors-container">
           <ul class="colors-list"></ul>
-          <div class="color-picker-container">
+		  <div class="atari-color-picker-container" name="atari-color-picker">
+			<div class="atari-color-picker-spectrum"></div>
+			<div class="atari-color-preview-container"><div class="atari-color-preview-part1"></div><div class="atari-color-preview1"></div></div>
+			<div class="atari-color-preview-container"><div class="atari-color-preview-part2"></div><div class="atari-color-preview2"></div></div>
+			<div class="atari-color-preview-container"><div class="atari-color-preview-part3"></div><div class="atari-color-preview3"></div></div>
+		  </div>
+          <div class="color-picker-container" name="default-color-picker">
             <div class="color-picker-spectrum"></div>
             <div class="color-picker-input">
               <input type="text"  data-model="hex" data-dimension="*" class="textfield  uppercase" value="#000000" />
@@ -64,6 +70,8 @@
           </div>
         </div>
         <div class="create-palette-actions">
+			<button type="button" name="create-palette-forceataripal" data-action="forceataripal" class="button button-primary button-hidden create-palette-forceataripal">Force Atari PAL</button>
+			<button type="button" name="create-palette-atarimode" data-action="atarimode" class="button button-primary create-palette-atarimode">Atari Mode</button>
           <button type="button" name="create-palette-cancel" data-action="cancel" class="button create-palette-cancel">Cancel</button>
           <button type="button" name="create-palette-delete" data-action="delete" class="button button-primary create-palette-delete">Delete</button>
           <!-- <button type="button" name="create-palette-clone" class="button button-primary create-palette-clone">Save as new</button> -->

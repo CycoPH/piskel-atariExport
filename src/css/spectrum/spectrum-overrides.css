@@ -56,11 +56,10 @@
 }
 
 .sp-palette .sp-thumb-el {
-  margin : 0 5px 5px 0;
-  width: 24px;
-  height: 24px;
-  border-color: #444;
-
+  margin : 0px;
+  /* width: 19px; */
+  /* height: 19px; */
+  border-color: rgb(0, 0, 0);
 }
 
 .sp-picker-container, .sp-palette-container {
