@@ -14,10 +14,10 @@
       template : 'templates/settings/export/zip.html',
       controller : ns.ZipExportController
     },
-	'atari' : {
-		template : 'templates/settings/export/atari.html',
-		controller : ns.AtariExportController
-	},
+    'atari' : {
+      template : 'templates/settings/export/atari.html',
+      controller : ns.AtariExportController
+    },
     'misc' : {
       template : 'templates/settings/export/misc.html',
       controller : ns.MiscExportController

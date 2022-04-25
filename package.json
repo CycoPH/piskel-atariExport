@@ -1,10 +1,11 @@
 {
   "name": "piskel",
-  "version": "0.16.0-SNAPSHOT",
+  "version": "0.17.0-SNAPSHOT",
   "description": "Pixel art editor",
   "author": "Julian Descottes <julian.descottes@gmail.com>",
   "contributors": [
-    "Vincent Renaudin"
+    "Vincent Renaudin",
+	"Peter Hinz"
   ],
   "homepage": "http://github.com/piskelapp/piskel",
   "license": "Apache-2.0",

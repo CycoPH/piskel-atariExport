@@ -58,6 +58,7 @@
       X1_PREVIEW : createShortcut('x1-preview', 'Select original size preview', 'alt+1'),
       BEST_PREVIEW : createShortcut('best-preview', 'Select best size preview', 'alt+2'),
       FULL_PREVIEW : createShortcut('full-preview', 'Select full size preview', 'alt+3'),
+      ATARI_PREVIEW : createShortcut('atari-preview', 'Select best size Atari preview', 'alt+4'),
       ONION_SKIN : createShortcut('onion-skin', 'Toggle onion skin', 'alt+O'),
       TOGGLE_GRID : createShortcut('toggle-grid', 'Show/Hide grid', 'alt+G'),
       LAYER_PREVIEW : createShortcut('layer-preview', 'Toggle layer preview', 'alt+L'),

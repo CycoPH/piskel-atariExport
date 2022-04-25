@@ -23,14 +23,22 @@
 
   ns.CanvasRenderer.prototype.render = function  () {
     var canvas = this.createCanvas_();
+    var xZoom = this.zoom;
+    var yZoom = this.zoom;
+    if (xZoom < 0) {
+      // -ve zoom means Atari scale zoom
+      // Switch -ve => +ve and reduce Y zoom
+      xZoom = -xZoom;
+      yZoom = xZoom / 1.5;
+    }
 
     // Draw in canvas
     pskl.utils.FrameUtils.drawToCanvas(this.frame, canvas, this.transparentColor_, this.opacity_);
 
-    var scaledCanvas = this.createCanvas_(this.zoom);
+    var scaledCanvas = this.createCanvas_(xZoom);
     var scaledContext = scaledCanvas.getContext('2d');
     pskl.utils.CanvasUtils.disableImageSmoothing(scaledCanvas);
-    scaledContext.scale(this.zoom, this.zoom);
+    scaledContext.scale(xZoom, yZoom);
     scaledContext.drawImage(canvas, 0, 0);
 
     return scaledCanvas;

@@ -58,6 +58,8 @@
       zoom = Math.floor(this.calculateZoom_());
     } else if (previewSize === 'full') {
       zoom = this.calculateZoom_();
+    } else if (previewSize === 'atari') {
+      zoom = -Math.floor(this.calculateZoom_());
     }
 
     this.renderer.setZoom(zoom);

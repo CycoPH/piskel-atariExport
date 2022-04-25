@@ -25,6 +25,11 @@
         shortcut: pskl.service.keyboard.Shortcuts.MISC.BEST_PREVIEW,
         tooltip: 'Best size preview'
       },
+      atari: {
+        button: document.querySelector('.atari-size-button'),
+        shortcut: pskl.service.keyboard.Shortcuts.MISC.ATARI_PREVIEW,
+        tooltip: 'Best Atari size preview'
+      },
       full: {
         button: document.querySelector('.full-size-button'),
         shortcut: pskl.service.keyboard.Shortcuts.MISC.FULL_PREVIEW,
@@ -105,12 +110,12 @@
       if (fullZoom === bestZoom) {
         // If the full zoom is the same as the best zoom, display the best option only as
         // it gives the exact factor information.
-        validSizes = ['original', 'best'];
+        validSizes = ['original', 'best', 'atari'];
       } else if (bestZoom === 1) {
         // If best zoom is 1x, remove it as it is redundant with the original option.
-        validSizes = ['full', 'original'];
+        validSizes = ['full', 'original', 'atari'];
       } else {
-        validSizes = ['full', 'original', 'best'];
+        validSizes = ['full', 'original', 'best', 'atari'];
       }
     }
 
